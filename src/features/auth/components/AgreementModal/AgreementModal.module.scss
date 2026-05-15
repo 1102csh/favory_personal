@@ -1,0 +1,17 @@
+// src/features/auth/components/AgreementModal/AgreementModal.module.scss
+
+.version {
+  margin: 0 0 $space-3;
+  font-size: $font-size-xs;
+  color: var(--color-text-subtle);
+}
+
+.content {
+  margin: 0;
+  font-family: inherit;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-primary);
+  white-space: pre-wrap;
+  word-break: keep-all;
+}

@@ -1,0 +1,8 @@
+// src/features/auth/pages/SignUpPage.module.scss
+
+.link {
+  color: var(--color-brand);
+  font-weight: $font-weight-medium;
+
+  @include hover { color: var(--color-brand-hover); text-decoration: underline; }
+}

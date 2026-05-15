@@ -1,0 +1,9 @@
+// src/features/auth/components/CompleteProfileForm/CompleteProfileForm.module.scss
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include from-tablet { gap: $space-5; }
+}

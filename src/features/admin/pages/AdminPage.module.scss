@@ -1,0 +1,110 @@
+/* src/features/admin/pages/AdminPage.module.scss */
+
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f5f7;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* 좌측 사이드바 */
+.sidebar {
+  width: 260px;
+  background: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.logoArea {
+  padding: 24px; display: flex; align-items: center; gap: 8px; color: #888; font-size: 13px;
+  cursor: pointer; transition: color 0.2s; border-bottom: 1px solid #333;
+  &:hover { color: white; }
+}
+
+.adminProfile {
+  padding: 24px; display: flex; align-items: center; gap: 12px;
+  .avatar { width: 40px; height: 40px; background: #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #D4A373; }
+  strong { display: block; font-size: 15px; font-weight: 700; color: white; }
+  span { font-size: 12px; color: #888; }
+}
+
+.navMenu {
+  flex: 1; padding: 0 16px; display: flex; flex-direction: column; gap: 4px;
+  button {
+    display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: transparent;
+    border: none; color: #888; font-size: 14px; font-weight: 600; border-radius: 12px; cursor: pointer; transition: all 0.2s;
+    &:hover { background: #2a2a2a; color: white; }
+    &.active { background: #D4A373; color: white; }
+  }
+}
+
+.logoutBtn {
+  margin: 24px; padding: 14px; background: #2a2a2a; color: #aaa; border: none; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+  &:hover { background: #ef4444; color: white; }
+}
+
+/* 우측 메인 영역 */
+.mainArea {
+  flex: 1; padding: 40px; overflow-y: auto; height: 100vh; box-sizing: border-box;
+}
+
+/* 이하 콘텐츠 공통 스타일 (배너 등) */
+.contentWrapper { width: 100%; max-width: 1200px; margin: 0 auto; }
+.contentHeader {
+  display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;
+  h2 { font-size: 26px; font-weight: 800; color: #111; margin: 0 0 8px 0; }
+  p { color: #666; font-size: 14px; margin: 0; }
+}
+
+.actionBtn {
+  background: #111; color: white; border: none; padding: 10px 20px; border-radius: 10px;
+  font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;
+  &:hover { background: #333; }
+}
+
+.layoutRow { display: flex; gap: 24px; align-items: flex-start; }
+.listSection { flex: 1; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); overflow: hidden; }
+
+.table {
+  width: 100%; border-collapse: collapse;
+  th { background: #fafafa; padding: 14px 16px; font-size: 13px; color: #888; text-align: left; border-bottom: 1px solid #eee; }
+  td { padding: 14px 16px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+}
+
+.imgPreview { width: 100px; height: 50px; border-radius: 6px; background-size: cover; background-position: center; border: 1px solid #eee; }
+.titleInfo strong { display: block; font-size: 14px; margin-bottom: 4px; }
+.titleInfo span { font-size: 12px; color: #999; }
+.statusOn { color: #10b981; font-weight: 700; font-size: 12px; }
+.statusOff { color: #ef4444; font-weight: 700; font-size: 12px; }
+
+.actions {
+  display: flex; gap: 6px;
+  button { background: #f5f5f5; border: none; padding: 6px; border-radius: 6px; cursor: pointer; color: #666; }
+  button:hover { background: #ddd; color: #000; }
+  .delete:hover { background: #fee2e2; color: #ef4444; }
+}
+
+.editForm {
+  width: 340px; background: white; border-radius: 16px; padding: 24px; flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: sticky; top: 40px; border: 1px solid #eee;
+  .formHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; h3 { margin: 0; font-size: 16px; } button { border:none; background:none; cursor:pointer; } }
+}
+
+.inputGroup {
+  margin-bottom: 16px;
+  label { display: block; font-size: 12px; font-weight: 700; color: #444; margin-bottom: 6px; }
+  input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; }
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.saveBtn { width: 100%; background: #D4A373; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+
+.placeholder {
+  height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #888;
+  h2 { margin: 16px 0 8px; color: #333; }
+}

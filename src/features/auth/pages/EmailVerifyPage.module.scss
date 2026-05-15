@@ -1,0 +1,25 @@
+// src/features/auth/pages/EmailVerifyPage.module.scss
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.steps {
+  margin: 0;
+  padding-left: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+}
+
+.link {
+  color: var(--color-brand);
+  font-weight: $font-weight-medium;
+
+  @include hover { text-decoration: underline; }
+}

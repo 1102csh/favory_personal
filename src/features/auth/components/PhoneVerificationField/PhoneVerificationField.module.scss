@@ -1,0 +1,44 @@
+// src/features/auth/components/PhoneVerificationField/PhoneVerificationField.module.scss
+
+/* 
+*   모바일 보강 포인트: inputMode="numeric"으로 모바일에서 숫자 키패드 자동 노출, 
+*   autoComplete="one-time-code"로 iOS의 SMS 자동입력 기능 지원 
+*   (실제 SMS 연동 시 자동으로 동작).
+*/
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.otpRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2;
+  align-items: end;
+
+  @include from-tablet {
+    grid-template-columns: 1fr auto;
+    gap: $space-3;
+  }
+}
+
+.timer {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 $space-2;
+  font-size: $font-size-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-danger);
+}
+
+.message {
+  margin: 0;
+  font-size: $font-size-xs;
+  line-height: $line-height-normal;
+
+  &[data-tone='success'] { color: var(--color-success); }
+  &[data-tone='error']   { color: var(--color-danger); }
+  &[data-tone='info']    { color: var(--color-text-secondary); }
+}

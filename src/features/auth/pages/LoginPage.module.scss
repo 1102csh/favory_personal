@@ -1,0 +1,16 @@
+// src/features/auth/pages/LoginPage.module.scss
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.link {
+  color: var(--color-text-secondary);
+  font-weight: $font-weight-medium;
+
+  @include hover { color: var(--color-text-primary); text-decoration: underline; }
+}
+
+.dot { color: var(--color-text-subtle); }

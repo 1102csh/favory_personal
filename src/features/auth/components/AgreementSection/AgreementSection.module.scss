@@ -1,0 +1,73 @@
+// src/features/auth/components/AgreementSection/AgreementSection.module.scss
+
+.wrapper {
+  margin: 0;
+  padding: $space-4;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-soft);
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  @include from-tablet {
+    padding: $space-5;
+  }
+}
+
+.legend {
+  padding: 0 $space-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.allRow {
+  // 강조를 위해 살짝 더 큰 폰트
+  font-size: $font-size-md;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border-subtle);
+  margin: $space-1 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.itemLabel { line-height: $line-height-normal; }
+
+.viewBtn {
+  @include reset-button;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  flex-shrink: 0;
+  // 터치 타겟 확보
+  padding: $space-2;
+  margin: -#{$space-2};
+
+  @include hover { color: var(--color-text-primary); }
+  &:focus-visible { @include focus-ring; border-radius: $radius-sm; }
+}
+
+.hint {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}

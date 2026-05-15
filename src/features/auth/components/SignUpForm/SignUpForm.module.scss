@@ -1,0 +1,11 @@
+// src/features/auth/components/SignUpForm/SignUpForm.module.scss
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include from-tablet {
+    gap: $space-5;
+  }
+}

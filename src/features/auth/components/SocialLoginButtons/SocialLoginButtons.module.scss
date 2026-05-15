@@ -1,0 +1,83 @@
+// src/features/auth/components/SocialLoginButtons/SocialLoginButtons.module.scss
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.button {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  height: $control-height-md;
+  padding: 0 $space-4;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    opacity $transition-fast;
+
+  @include hover { background: var(--color-bg-soft); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+  &:focus-visible { @include focus-ring; }
+
+  // ----- Provider별 컬러 (라이트모드 기준; 다크모드는 토큰 사용) -----
+  &[data-provider='google'] {
+    // 구글은 흰 배경 + 컬러 로고가 가이드라인. 별도 변형 없음.
+  }
+
+  &[data-provider='kakao'] {
+    background: #FEE500;
+    border-color: #FEE500;
+    color: #181600;
+
+    @include hover { background: #FDD835; border-color: #FDD835; }
+
+    @include dark-only {
+      background: #FEE500;
+      color: #181600;
+    }
+  }
+
+  &[data-provider='naver'] {
+    background: #03C75A;
+    border-color: #03C75A;
+    color: #fff;
+
+    @include hover { background: #02B350; border-color: #02B350; }
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.label { flex: 1; text-align: center; }
+
+.badge {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  background: var(--color-bg-muted);
+  color: var(--color-text-secondary);
+  border-radius: $radius-full;
+}
