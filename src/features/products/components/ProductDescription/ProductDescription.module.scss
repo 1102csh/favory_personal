@@ -1,0 +1,49 @@
+// src/features/products/components/ProductDescription/ProductDescription.module.scss
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding-top: $space-6;
+  border-top: 1px solid var(--line);
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: $font-weight-bold;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bulletItem {
+  position: relative;
+  padding-left: 12px;
+  font-size: 13.5px;
+  color: var(--text-sub);
+  line-height: 1.7;
+
+  &::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-weight: $font-weight-bold;
+  }
+}

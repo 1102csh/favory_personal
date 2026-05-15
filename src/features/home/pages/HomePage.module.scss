@@ -1,0 +1,148 @@
+/* --- 전체 레이아웃 --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+/* --- 공통 섹션 헤더 --- */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding: 0 16px;
+
+  .titleGroup {
+    .sectionTitle { display: flex; align-items: center; font-size: 24px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+    .sectionSubtitle { font-size: 15px; color: #666; }
+    .highlightIcon { color: #b8794f; margin-right: 8px; }
+  }
+
+  .moreBtn {
+    display: flex; align-items: center; background: none; border: none; color: #888;
+    font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.2s;
+    &:hover { color: #1a1a1a; }
+  }
+}
+
+/* --- 1. 메인 배너 --- */
+.bannerSection {
+  width: 100%;
+  height: 380px;
+  background: linear-gradient(135deg, #fdf6f0 0%, #f4e8df 100%);
+  border-radius: 24px;
+  margin: 24px 0 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  box-shadow: 0 20px 40px rgba(184, 121, 79, 0.08);
+
+  .bannerContent {
+    h2 { font-size: 36px; font-weight: 800; color: #333; line-height: 1.4; margin-bottom: 16px; }
+    p { font-size: 18px; color: #b8794f; font-weight: 600; margin-bottom: 24px; }
+    
+    .bannerBtn {
+      background: #1a1a1a; color: white; padding: 14px 28px; border-radius: 30px;
+      font-size: 15px; font-weight: 700; border: none; cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      &:hover { transform: translateY(-2px); background: #b8794f; }
+    }
+  }
+}
+
+/* --- 2. 신규 작가 (가로 스크롤) --- */
+.newArtistSection { margin-bottom: 80px; }
+
+.artistScrollContainer {
+  display: flex; gap: 20px; padding: 10px 16px 24px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+
+.artistCard {
+  min-width: 150px; scroll-snap-align: start; cursor: pointer; transition: transform 0.2s;
+  &:hover {
+    transform: translateY(-6px);
+    .imageWrapper { box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+    .imageWrapper img { transform: scale(1.05); }
+  }
+
+  .imageWrapper {
+    width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-bottom: 16px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.06); transition: box-shadow 0.3s;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  }
+
+  .artistInfo {
+    text-align: center;
+    .category { display: block; font-size: 12px; color: #b8794f; font-weight: 700; margin-bottom: 4px; }
+    .name { font-size: 16px; font-weight: 700; color: #222; }
+  }
+}
+
+/* 6번째 고정 CTA 카드 */
+.ctaCard {
+  min-width: 240px; scroll-snap-align: start;
+  border: 2px dashed #d1b49f; border-radius: 24px; padding: 32px 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; background: #fffaf6; cursor: pointer; transition: all 0.3s ease;
+
+  &:hover {
+    background: #fdf2e9; transform: translateY(-6px);
+    border-style: solid; border-color: #b8794f;
+    box-shadow: 0 12px 24px rgba(184, 121, 79, 0.15);
+  }
+
+  .ctaIconWrapper {
+    width: 64px; height: 64px; background: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; box-shadow: 0 4px 12px rgba(184, 121, 79, 0.15); color: #b8794f;
+  }
+
+  .ctaTitle { font-size: 17px; font-weight: 800; color: #222; margin-bottom: 8px; }
+  .ctaDesc { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 24px; }
+
+  .ctaBtn {
+    display: flex; align-items: center; gap: 6px;
+    background: #222; color: white; border: none; padding: 12px 20px;
+    border-radius: 30px; font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+    &:hover { background: #b8794f; }
+  }
+}
+
+/* --- 3. 트렌딩 아티스트 (그리드 레이아웃) --- */
+.trendingSection { padding: 0 16px; }
+
+.trendingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.trendingCard {
+  cursor: pointer; transition: transform 0.2s;
+  &:hover { transform: translateY(-4px); }
+
+  .trendingImg {
+    position: relative; height: 260px; background: #f0f0f0; 
+    border-radius: 20px; margin-bottom: 16px;
+    
+    .rankBadge {
+      position: absolute; top: 16px; left: 16px;
+      width: 32px; height: 32px; background: #1a1a1a; color: white;
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px;
+    }
+  }
+
+  .trendingInfo {
+    padding: 0 8px;
+    h4 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+    p { font-size: 14px; color: #666; margin-bottom: 8px; }
+    .rating { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: #444; }
+  }
+}
