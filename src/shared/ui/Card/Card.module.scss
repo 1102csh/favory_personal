@@ -1,0 +1,59 @@
+// src/shared/ui/Card/Card.module.scss
+
+.card {
+  background: var(--color-bg-surface);
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border-subtle);
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    transform $transition-fast;
+
+  @include from-tablet {
+    border-radius: $radius-xl;
+  }
+}
+
+// ----- Variants -----
+.variant-default {
+  // 기본 — surface 배경 + 옅은 보더
+}
+
+.variant-soft {
+  background: var(--color-bg-soft);
+}
+
+.variant-elevated {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+.variant-outline {
+  background: transparent;
+  border-color: var(--color-border-strong);
+}
+
+// ----- Padding -----
+.padding-sm { padding: $space-3; }
+.padding-md { padding: $space-4; }
+.padding-lg { padding: $space-6; }
+
+@include from-tablet {
+  .padding-md { padding: $space-5; }
+  .padding-lg { padding: $space-8; }
+}
+
+// ----- Interactive -----
+.interactive {
+  cursor: pointer;
+
+  @include hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

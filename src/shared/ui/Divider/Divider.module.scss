@@ -1,0 +1,21 @@
+// src/shared/ui/Divider/Divider.module.scss
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  color: var(--color-text-subtle);
+  font-size: $font-size-xs;
+
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-subtle);
+  }
+}
+
+.label {
+  flex-shrink: 0;
+  padding: 0 $space-1;
+}

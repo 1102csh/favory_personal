@@ -1,0 +1,184 @@
+// src/shared/ui/ImageUploadField/ImageUploadField.module.scss
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-3;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.modeToggle {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.dropzone {
+  position: relative;
+  width: 100%;
+  border: 2px dashed var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-soft);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color $transition-fast,
+    background-color $transition-fast;
+
+  &:focus-visible { @include focus-ring; }
+
+  @include hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-bg-muted);
+  }
+}
+
+.shape-square {
+  aspect-ratio: 1;
+  max-width: 200px;
+}
+
+.shape-wide {
+  aspect-ratio: 16 / 9;
+}
+
+.dropzoneDragOver {
+  border-color: var(--color-brand);
+  background: var(--color-brand-soft);
+}
+
+.dropzoneFilled {
+  border-style: solid;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: $space-3;
+
+  p { margin: 0; font-size: $font-size-sm; }
+}
+
+.placeholderHint {
+  font-size: $font-size-xs !important;
+  color: var(--color-text-subtle);
+}
+
+.clearBtn {
+  @include reset-button;
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include hover { background: rgba(0, 0, 0, 0.8); }
+}
+
+.uploadingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  pointer-events: none;
+}
+
+.spinner { animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.fileInput {
+  display: none;
+}
+
+.urlInput {
+  width: 100%;
+  height: 44px;
+  padding: 0 $space-3;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+  font-family: inherit;
+
+  @include until-tablet { font-size: $font-size-lg; }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.urlInputError { border-color: var(--color-danger); }
+
+.error {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-danger);
+}
+
+.hint {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+@include reduced-motion {
+  .spinner { animation: none; }
+}

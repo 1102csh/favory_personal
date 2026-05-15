@@ -1,0 +1,77 @@
+// src/shared/ui/Input/Input.module.scss
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  width: 100%;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-surface);
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: var(--color-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+
+  &.hasError {
+    border-color: var(--color-danger);
+    &:focus-within { box-shadow: var(--focus-ring-danger); }
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: $control-height-md;
+  padding: 0 $space-4;
+  border: none;
+  border-radius: $radius-md;
+  background: transparent;
+  font-size: $font-size-md;
+  color: var(--color-text-primary);
+  outline: none;
+
+  // 모바일에서 자동 zoom 방지
+  @include until-tablet { font-size: $font-size-lg; }
+
+  &::placeholder { color: var(--color-text-subtle); }
+  &:disabled { color: var(--color-text-secondary); cursor: not-allowed; }
+
+  // iOS Safari 기본 스타일 제거
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.rightSlot {
+  display: flex;
+  align-items: center;
+  padding-right: $space-2;
+  flex-shrink: 0;
+}
+
+.error {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-danger);
+  line-height: $line-height-tight;
+}
+
+.helper {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  line-height: $line-height-tight;
+}

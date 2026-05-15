@@ -1,0 +1,33 @@
+// src/shared/ui/Alert/Alert.module.scss
+
+.alert {
+  padding: $space-3 $space-4;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  border: 1px solid transparent;
+}
+
+.tone-info {
+  background: var(--color-bg-soft);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-subtle);
+}
+
+.tone-success {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.tone-warning {
+  background: var(--color-bg-soft);
+  color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.tone-danger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}

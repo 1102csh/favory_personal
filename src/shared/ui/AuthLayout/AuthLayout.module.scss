@@ -1,0 +1,88 @@
+// src/shared/ui/AuthLayout/AuthLayout.module.scss
+
+.shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+  background: var(--color-bg-page);
+
+  @include from-tablet {
+    align-items: center;
+    padding: $space-8 $space-4;
+    background: var(--color-bg-soft);
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 100%;
+  background: var(--color-bg-surface);
+  padding: $space-6 $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  // 모바일 노치/홈바 안전영역 보장
+  padding-top:    calc(#{$space-6} + env(safe-area-inset-top));
+  padding-bottom: calc(#{$space-6} + env(safe-area-inset-bottom));
+
+  @include from-tablet {
+    max-width: 440px;
+    padding: $space-10 $space-8;
+    border-radius: $radius-lg;
+    border: 1px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-md);
+
+    // 다크모드에서 그림자 대신 보더 강조 (이미 토큰에서 처리됨)
+  }
+
+  @include from-desktop {
+    max-width: 480px;
+  }
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+
+  @include from-tablet { font-size: $font-size-2xl; }
+}
+
+.subtitle {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: $space-4;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: $space-4;
+}

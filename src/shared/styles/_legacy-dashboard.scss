@@ -1,0 +1,403 @@
+// src/shared/styles/_legacy-dashboard.scss (전체 교체)
+//
+// FAVORY-sub + ProfilePage 통합 시 가져온 레거시 스타일.
+// 이 파일의 변수와 클래스는 legacy-scope 내부에서만 활성화됩니다.
+//
+// 점진적으로 우리 디자인 시스템(_tokens.scss)으로 이전 예정.
+
+@use './palette' as *;
+
+.legacy-scope {
+  // ============ 메인 서비스 톤 (MainScreen, SiteNav 등) ============
+  --brand: #D4A373;
+  --brand-light: #F5EBE0;
+  --brand-soft: #E8C6A0;          // ← 신규 (ProfilePage)
+  --brand-dim: #EDD5B8;
+  --brand-dark: #B8844F;
+
+  --bg: #FDFAF6;
+  --bg-main: #FDFAF6;             // ← 신규 (ProfilePage 별칭)
+  --bg2: #FDFAF6;
+  --bg-soft: #F8F3ED;             // ← 신규 (ProfilePage)
+  --bg-muted: #F1E8DE;            // ← 신규 (ProfilePage)
+
+  --white: #FFFFFF;               // ← 신규 (ProfilePage)
+
+  --line: #E8DCCF;
+  --line-strong: #DECBB8;         // ← 신규 (ProfilePage)
+
+  --charcoal: #2C2018;
+  --gray: #9C8B7E;
+  --gray-light: #C4B5A8;
+
+  // ============ 텍스트 (ProfilePage 4단계 톤) ============
+  --text-main: #2C2018;
+  --text-sub: #6B4C30;            // ← 신규
+  --text-muted: #8C7A6B;          // ← 통합값으로 교체 (대시보드 #8b7565와 거의 동일)
+  --text-light: #B1A295;          // ← 신규
+
+  // ============ 작가 대시보드 톤 ============
+  --side-bg: #241913;
+  --card-bg: rgba(255, 255, 255, 0.84);
+  --brand-deep: #8f5734;
+  --green: #7A8C6E;               // ← ProfilePage 값 우선 (대시보드 #5f8d63 → 통합)
+  --blue: #6878A8;                // ← ProfilePage 값 우선
+  --gold: #c49a54;
+  --active-grad: linear-gradient(135deg, #c28a61, #9c633f);
+
+  // ============ Shadow (ProfilePage 3단계) ============
+  --shadow-sm: 0 2px 14px rgba(44, 32, 24, 0.05);
+  --shadow-md: 0 8px 28px rgba(44, 32, 24, 0.08);
+  --shadow-lg: 0 16px 44px rgba(44, 32, 24, 0.12);
+
+  // ============ Radius (ProfilePage 4단계) ============
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  // ============ Nav / 표면 보조 ============
+  --nav-bg:           rgba(253, 250, 246, 0.95);
+  --avatar-ring-bg:   #F5EBE0;
+  --primary-cta-bg:   #2C2018;
+  --primary-cta-text: #FFFFFF;
+  --management-bg:    #E05252;
+  --management-text:  #FFFFFF;
+}
+
+// ============================================================
+// 다크 모드 — legacy-scope 내부 변수 재매핑
+// _tokens.scss가 다크 토큰을 정의하지만, 레거시 코드(.legacy-scope)는
+// 자체 변수(--bg, --white, --text-main 등)를 쓰므로 별도 오버라이드 필요.
+// ============================================================
+:root[data-theme='dark'] .legacy-scope {
+  // 배경
+  --bg:           #{$ink-900};
+  --bg-main:      #{$ink-900};
+  --bg2:          #{$ink-900};
+  --bg-soft:      #{$ink-800};
+  --bg-muted:     #{$gray-800};
+  --white:        #{$ink-800};      // 카드 배경 → 어두운 면
+
+  // 라인
+  --line:         #{$gray-700};
+  --line-strong:  #{$gray-600};
+
+  // 브랜드 (다크에서는 약간 더 밝게 — _tokens.scss와 동일 톤)
+  --brand:        #{$beige-300};
+  --brand-light:  rgba(212, 163, 115, 0.16);
+  --brand-soft:   rgba(212, 163, 115, 0.20);
+  --brand-dim:    rgba(212, 163, 115, 0.30);
+  --brand-dark:   #{$beige-200};
+
+  // 텍스트 (밝은 톤 4단계)
+  --charcoal:     #{$gray-100};
+  --gray:         #{$gray-300};
+  --gray-light:   #{$gray-400};
+  --text-main:    #{$gray-100};
+  --text-sub:     #{$beige-300};
+  --text-muted:   #{$gray-300};
+  --text-light:   #{$gray-400};
+
+  // 대시보드 톤
+  --side-bg:      #{$gray-900};
+  --card-bg:      rgba(28, 24, 20, 0.84);
+
+  // Shadow (다크에선 더 진하게 — 표면 분리 효과 유지)
+  --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.50);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.60);
+
+  // Nav / 표면 보조
+  --nav-bg:           rgba(19, 17, 16, 0.92);
+  --avatar-ring-bg:   rgba(212, 163, 115, 0.16);
+  --primary-cta-bg:   #{$beige-300};
+  --primary-cta-text: #{$gray-900};
+  --management-bg:    #{$red-300};
+  --management-text:  #{$gray-900};
+}
+
+// 시스템 다크 모드 fallback (사용자가 명시적으로 선택하지 않은 경우)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .legacy-scope {
+    --bg:           #{$ink-900};
+    --bg-main:      #{$ink-900};
+    --bg2:          #{$ink-900};
+    --bg-soft:      #{$ink-800};
+    --bg-muted:     #{$gray-800};
+    --white:        #{$ink-800};
+    --line:         #{$gray-700};
+    --line-strong:  #{$gray-600};
+    --brand:        #{$beige-300};
+    --brand-light:  rgba(212, 163, 115, 0.16);
+    --brand-soft:   rgba(212, 163, 115, 0.20);
+    --brand-dim:    rgba(212, 163, 115, 0.30);
+    --brand-dark:   #{$beige-200};
+    --charcoal:     #{$gray-100};
+    --gray:         #{$gray-300};
+    --gray-light:   #{$gray-400};
+    --text-main:    #{$gray-100};
+    --text-sub:     #{$beige-300};
+    --text-muted:   #{$gray-300};
+    --text-light:   #{$gray-400};
+    --side-bg:      #{$gray-900};
+    --card-bg:      rgba(28, 24, 20, 0.84);
+    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.40);
+    --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.50);
+    --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.60);
+    --nav-bg:           rgba(19, 17, 16, 0.92);
+    --avatar-ring-bg:   rgba(212, 163, 115, 0.16);
+    --primary-cta-bg:   #{$beige-300};
+    --primary-cta-text: #{$gray-900};
+    --management-bg:    #{$red-300};
+    --management-text:  #{$gray-900};
+  }
+}
+
+// ============ 대시보드 전용 클래스 ============
+
+.dashboard-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 249, 243, 0.95), rgba(247, 241, 234, 0) 36%),
+    linear-gradient(180deg, #f9f4ee 0%, #f3ebe2 100%);
+}
+
+.sidebar-surface {
+  background: linear-gradient(180deg, #261b14 0%, #211711 100%);
+  color: #f5ebe0;
+}
+
+.group-title {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: rgba(245, 235, 224, 0.45);
+  margin: 24px 0 10px 22px;
+  font-weight: 700;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  margin: 4px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  color: rgba(245, 235, 224, 0.72);
+  font-size: 13.5px;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff7ef;
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, #c28a61, #9c633f);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 14px 28px rgba(115, 70, 42, 0.34);
+}
+
+.badge-num {
+  position: absolute;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 244, 232, 0.92);
+  color: #8f5734;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.badge-new {
+  position: absolute;
+  right: 14px;
+  border-radius: 999px;
+  background: rgba(226, 244, 229, 0.94);
+  color: #48734e;
+  font-size: 9px;
+  padding: 3px 7px;
+  font-weight: 700;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 26px;
+  padding: 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 14px 32px rgba(61, 39, 20, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.card-soft {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 239, 0.82));
+  border: 1px solid rgba(144, 104, 74, 0.16);
+}
+
+.stat-tile {
+  border-radius: 20px;
+  border: 1px solid rgba(144, 104, 74, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 242, 236, 0.92));
+  box-shadow: 0 12px 24px rgba(61, 39, 20, 0.04);
+  transition: transform 0.2s;
+}
+
+.stat-tile:hover {
+  transform: translateY(-2px);
+}
+
+.fade-in {
+  animation: legacy-fadeIn 0.4s ease;
+}
+
+@keyframes legacy-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  overflow-y: auto;
+  padding-bottom: 40px;
+  background: rgba(28, 20, 15, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+// ============ 테이블 ============
+.legacy-scope table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.legacy-scope th {
+  text-align: left;
+  font-size: 11px;
+  color: #8b7565;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(144, 104, 74, 0.16);
+  text-transform: uppercase;
+}
+
+.legacy-scope td {
+  padding: 16px 10px;
+  font-size: 13.5px;
+  border-bottom: 1px solid rgba(144, 104, 74, 0.1);
+  color: #2f2219;
+}
+
+// ============ 메인 서비스 애니메이션 ============
+@keyframes legacy-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.legacy-scope .au {
+  animation: legacy-fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.legacy-scope .d1 { animation-delay: 0.05s; }
+.legacy-scope .d2 { animation-delay: 0.13s; }
+.legacy-scope .d3 { animation-delay: 0.19s; }   // ← 신규 (ProfilePage)
+.legacy-scope .d4 { animation-delay: 0.28s; }   // ← 신규
+.legacy-scope .d5 { animation-delay: 0.38s; }   // ← 신규
+
+.legacy-scope .lift {
+  transition:
+    transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.24s ease,
+    border-color 0.2s ease;
+}
+.legacy-scope .lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(44, 32, 24, 0.06) !important;
+}
+
+.legacy-scope .press {
+  transition: transform 0.12s ease, opacity 0.15s;
+  cursor: pointer;
+}
+.legacy-scope .press:active {
+  transform: scale(0.98);
+}
+
+// ============ ProfilePage 전용 — 줌, 펼침 영역 ============
+.legacy-scope .zoom img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.legacy-scope .zoom:hover img {
+  transform: scale(1.05);
+}
+
+.legacy-scope .notice-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.legacy-scope .notice-body.open {
+  max-height: 320px;
+}
+
+.legacy-scope .divider {
+  height: 1px;
+  background: var(--line);
+  margin: 8px 0;
+}
+
+// ============ MainScreen (기존) ============
+.legacy-scope .all-feeds-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  background: #FDFAF6;
+  border: 1px solid #E8DCCF;
+  color: #B8844F;
+  font-weight: 700;
+  font-size: 12.5px;
+  margin-top: 10px;
+  transition: 0.2s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+}
+.legacy-scope .all-feeds-btn:hover {
+  background: #F5EBE0;
+}
+
+.legacy-scope .nav-link {
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.legacy-scope .nav-link:hover {
+  color: var(--brand-dark);
+}
+
+// ============ ProfilePage CSS는 별도 파일로 ============
+// _legacy-profile.scss로 분리. 다음 섹션 참고.

@@ -1,0 +1,132 @@
+// src/shared/styles/_tokens.scss
+@use './palette' as *;
+
+/**
+ * 의미 기반 디자인 토큰.
+ * 컴포넌트는 var(--token-name) 형태로 참조합니다.
+ * data-theme 속성 변경만으로 전체 테마가 전환됩니다.
+ */
+:root,
+[data-theme='light'] {
+  // ----- Background -----
+  --color-bg-page:        #{$gray-0};
+  --color-bg-surface:     #{$gray-0};        // 카드 배경
+  --color-bg-soft:        #{$cream-50};      // 페이지 보조 배경
+  --color-bg-muted:       #{$gray-100};      // 비활성 영역
+  --color-bg-overlay:     rgba(0, 0, 0, 0.45);
+
+  // ----- Text -----
+  --color-text-primary:   #{$gray-700};
+  --color-text-secondary: #{$gray-500};
+  --color-text-subtle:    #{$gray-400};
+  --color-text-on-brand:  #{$gray-0};        // 브랜드 컬러 위 텍스트
+  --color-text-inverse:   #{$gray-0};
+
+  // ----- Border -----
+  --color-border-subtle:  #{$gray-200};
+  --color-border-strong:  #{$gray-300};
+  --color-border-focus:   #{$beige-400};
+
+  // ----- Brand -----
+  --color-brand:          #{$beige-400};
+  --color-brand-hover:    #{$beige-500};
+  --color-brand-active:   #{$beige-600};
+  --color-brand-disabled: #{$beige-200};
+  --color-brand-soft:     #{$beige-50};      // 호버 배경 등
+
+  // ----- Status -----
+  --color-danger:         #{$red-500};
+  --color-danger-soft:    #{$red-300};
+  --color-success:        #{$green-500};
+  --color-success-soft:   #{$green-300};
+  --color-warning:        #{$amber-500};
+
+  // ----- Focus ring -----
+  --focus-ring:           0 0 0 3px rgba(212, 163, 115, 0.28);
+  --focus-ring-danger:    0 0 0 3px rgba(214, 69, 69, 0.22);
+
+  // ----- Elevation (다크모드와 다름) -----
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='dark'] {
+  // ----- Background -----
+  --color-bg-page:        #{$ink-900};
+  --color-bg-surface:     #{$ink-800};
+  --color-bg-soft:        #{$ink-800};
+  --color-bg-muted:       #{$gray-800};
+  --color-bg-overlay:     rgba(0, 0, 0, 0.65);
+
+  // ----- Text -----
+  --color-text-primary:   #{$gray-100};
+  --color-text-secondary: #{$gray-300};
+  --color-text-subtle:    #{$gray-400};
+  --color-text-on-brand:  #{$gray-900};      // 베이지 위에 어두운 글씨
+  --color-text-inverse:   #{$gray-700};
+
+  // ----- Border -----
+  --color-border-subtle:  #{$gray-700};
+  --color-border-strong:  #{$gray-600};
+  --color-border-focus:   #{$beige-300};
+
+  // ----- Brand (다크모드에서는 약간 더 밝게) -----
+  --color-brand:          #{$beige-300};
+  --color-brand-hover:    #{$beige-200};
+  --color-brand-active:   #{$beige-100};
+  --color-brand-disabled: #{$beige-700};
+  --color-brand-soft:     rgba(212, 163, 115, 0.12);
+
+  // ----- Status -----
+  --color-danger:         #{$red-300};
+  --color-danger-soft:    rgba(214, 69, 69, 0.18);
+  --color-success:        #{$green-300};
+  --color-success-soft:   rgba(59, 167, 118, 0.18);
+  --color-warning:        #{$amber-500};
+
+  // ----- Focus ring (다크모드 톤) -----
+  --focus-ring:           0 0 0 3px rgba(222, 179, 137, 0.35);
+  --focus-ring-danger:    0 0 0 3px rgba(242, 160, 160, 0.30);
+
+  // ----- Elevation (그림자 대신 보더 강조) -----
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.50);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.60);
+}
+
+/**
+ * 시스템 설정이 dark이고 사용자가 명시적으로 light를 선택하지 않은 경우.
+ * data-theme이 명시되어 있으면 위 정의가 우선합니다.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    // [data-theme='dark']와 동일한 변수들을 다시 선언
+    --color-bg-page:        #{$ink-900};
+    --color-bg-surface:     #{$ink-800};
+    --color-bg-soft:        #{$ink-800};
+    --color-bg-muted:       #{$gray-800};
+    --color-bg-overlay:     rgba(0, 0, 0, 0.65);
+    --color-text-primary:   #{$gray-100};
+    --color-text-secondary: #{$gray-300};
+    --color-text-subtle:    #{$gray-400};
+    --color-text-on-brand:  #{$gray-900};
+    --color-text-inverse:   #{$gray-700};
+    --color-border-subtle:  #{$gray-700};
+    --color-border-strong:  #{$gray-600};
+    --color-border-focus:   #{$beige-300};
+    --color-brand:          #{$beige-300};
+    --color-brand-hover:    #{$beige-200};
+    --color-brand-active:   #{$beige-100};
+    --color-brand-disabled: #{$beige-700};
+    --color-brand-soft:     rgba(212, 163, 115, 0.12);
+    --color-danger:         #{$red-300};
+    --color-danger-soft:    rgba(214, 69, 69, 0.18);
+    --color-success:        #{$green-300};
+    --color-success-soft:   rgba(59, 167, 118, 0.18);
+    --color-warning:        #{$amber-500};
+    --focus-ring:           0 0 0 3px rgba(222, 179, 137, 0.35);
+    --focus-ring-danger:    0 0 0 3px rgba(242, 160, 160, 0.30);
+  }
+}

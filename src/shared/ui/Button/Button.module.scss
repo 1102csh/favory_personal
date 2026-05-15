@@ -1,0 +1,99 @@
+// src/shared/ui/Button/Button.module.scss
+
+.button {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast,
+    opacity $transition-fast;
+  user-select: none;
+  white-space: nowrap;
+
+  &:disabled { cursor: not-allowed; opacity: 0.85; }
+  &:focus-visible { @include focus-ring; }
+}
+
+// ----- Sizes (모바일 터치 타겟 고려) -----
+.size-sm { height: $control-height-sm; padding: 0 $space-3; font-size: $font-size-sm; }
+.size-md { height: $control-height-md; padding: 0 $space-4; font-size: $font-size-md; }
+.size-lg { height: $control-height-lg; padding: 0 $space-5; font-size: $font-size-lg; }
+
+.fullWidth { width: 100%; }
+
+// ----- Variants -----
+.variant-primary {
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  border: 1px solid var(--color-brand);
+
+  @include hover {
+    background: var(--color-brand-hover);
+    border-color: var(--color-brand-hover);
+  }
+  &:active:not(:disabled) {
+    background: var(--color-brand-active);
+    border-color: var(--color-brand-active);
+  }
+  &:disabled {
+    background: var(--color-brand-disabled);
+    border-color: var(--color-brand-disabled);
+  }
+}
+
+.variant-secondary {
+  background: var(--color-bg-surface);
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+
+  @include hover { background: var(--color-brand-soft); }
+  &:disabled {
+    color: var(--color-brand-disabled);
+    border-color: var(--color-brand-disabled);
+  }
+}
+
+.variant-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid transparent;
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+}
+
+.variant-danger {
+  background: var(--color-danger);
+  color: var(--color-text-on-brand);
+  border: 1px solid var(--color-danger);
+
+  @include hover { opacity: 0.88; }
+}
+
+.icon { display: inline-flex; }
+.label { display: inline-flex; align-items: center; }
+
+.loading { position: relative; }
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@include reduced-motion {
+  .spinner { animation: none; }
+  .button { transition: none; }
+}

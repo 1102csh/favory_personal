@@ -1,0 +1,54 @@
+// src/index.scss
+@use './shared/styles/variables' as *;
+@use './shared/styles/tokens';
+@use './shared/styles/legacy-dashboard';   // ✅ legacy-dashboard
+@use './shared/styles/legacy-profile';     // ✅ legacy-profile
+
+* { box-sizing: border-box; }
+
+html {
+  // iOS 자동 텍스트 확대 방지
+  -webkit-text-size-adjust: 100%;
+  // 다크모드일 때 폼 컨트롤 기본색도 함께 전환
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // 부드러운 테마 전환
+  transition: background-color $transition-normal, color $transition-normal;
+}
+
+// 모바일에서 100vh 대신 100dvh 활용을 위한 유틸
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+button { font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+
+// 모바일에서 input 포커스 시 자동 zoom 방지 (16px 이상이면 Safari 자동 zoom 안 함)
+@media (max-width: $bp-tablet) {
+  input, textarea, select { font-size: max(16px, 1em); }
+}
+
+a { color: inherit; text-decoration: none; }
+
+img, svg { display: block; max-width: 100%; }
+
+// Reduced motion 사용자 배려
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

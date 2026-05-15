@@ -1,0 +1,112 @@
+// src/shared/ui/Modal/Modal.module.scss
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  background: var(--color-bg-overlay);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  // 모바일: 바텀시트 느낌
+  padding: 0;
+
+  @include from-tablet {
+    align-items: center;
+    padding: $space-6;
+  }
+}
+
+.dialog {
+  width: 100%;
+  max-height: 90vh;
+  max-height: 90dvh;
+  background: var(--color-bg-surface);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  outline: none;
+
+  // 모바일: 바닥 붙이고 위쪽만 둥글게
+  border-radius: $radius-lg $radius-lg 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+
+  @include from-tablet {
+    max-width: 560px;
+    border-radius: $radius-lg;
+    padding-bottom: 0;
+  }
+
+  // 등장 애니메이션
+  animation: slideUp 220ms ease;
+
+  @include from-tablet {
+    animation: fadeIn 180ms ease;
+  }
+
+  @include reduced-motion { animation: none; }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.close {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+  &:focus-visible { @include focus-ring; }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-5;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-primary);
+  // 모바일 스크롤 관성
+  -webkit-overflow-scrolling: touch;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-2;
+  padding: $space-4 $space-5;
+  border-top: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

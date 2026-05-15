@@ -1,0 +1,22 @@
+// src/shared/ui/Logo/Logo.module.scss
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  // 모바일에서 너무 크지 않게
+  max-width: 100%;
+}
+
+// 라이트모드에서는 검정 박스 로고를 부드럽게 보이도록
+// (추후 투명배경 SVG로 교체 시 이 규칙은 제거 가능)
+.wrapper[data-variant='default'] .image {
+  border-radius: $radius-md;
+}

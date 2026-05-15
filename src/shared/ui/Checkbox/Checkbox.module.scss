@@ -1,0 +1,58 @@
+// src/shared/ui/Checkbox/Checkbox.module.scss
+
+.wrapper { display: flex; flex-direction: column; gap: $space-1; }
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  // 터치 영역 확보 (시각 박스는 18px이지만 라벨까지 포함해 충분)
+  min-height: 32px;
+
+  &.hasError .box { border-color: var(--color-danger); }
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+
+  &:checked + .box {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-text-on-brand);
+  }
+  &:focus-visible + .box {
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: $radius-sm;
+  background: var(--color-bg-surface);
+  color: transparent;
+  transition: background-color $transition-fast, border-color $transition-fast;
+  flex-shrink: 0;
+}
+
+.check { width: 12px; height: 12px; }
+
+.text { line-height: $line-height-normal; }
+.required { color: var(--color-danger); margin-right: 2px; }
+
+.error {
+  margin: 0 0 0 26px;
+  font-size: $font-size-xs;
+  color: var(--color-danger);
+}

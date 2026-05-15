@@ -1,0 +1,899 @@
+// src/shared/styles/_legacy-profile.scss
+//
+// 원본 FAVORY-ProfilePage_nhj/src/pages/ProfilePage/styles/profile.css 를
+// legacy-scope 내부로 격리한 버전.
+//
+// 주의: 원본 CSS는 그대로 보존. 점진적으로 CSS Modules로 이전 시
+//       이 파일에서 해당 클래스를 빼고 컴포넌트 module.scss로 이동.
+//
+// 원본 파일의 :root 변수, * 셀렉터, body 셀렉터는 제외했습니다
+//   (충돌 방지 — 변수는 _legacy-dashboard.scss에 통합됨).
+
+.legacy-scope {
+    // ============================================================
+    // 아래는 원본 profile.css 파일의 클래스들.
+    // .au, .d1~d5, .lift, .zoom, .press, .notice-body, .divider 는
+    // _legacy-dashboard.scss에 이미 정의되어 있으므로 여기서는 제외합니다.
+    // ============================================================
+
+    // 섹션 카운트 라벨
+    .tab-count-label {
+        font-size: 12.5px;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    // 탭 라인
+    .tab-line {
+        position: relative;
+    }
+
+    .tab-line.on::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 2px;
+        background: var(--text-main);
+        border-radius: 2px;
+    }
+
+    // ============ Product Card ============
+    .product-card {
+        cursor: pointer;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid var(--line);
+        transition: transform 0.24s, box-shadow 0.24s, border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--line-strong);
+    }
+
+    .product-card__image-wrap {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background: var(--bg-muted);
+    }
+
+    .product-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .product-card:hover .product-card__image {
+        transform: scale(1.04);
+    }
+
+    .product-card__badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .product-card__soldout {
+        position: absolute;
+        inset: 0;
+        background: rgba(44, 32, 24, 0.55);
+        backdrop-filter: blur(2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-card__soldout span {
+        color: #fff;
+        font-size: 11.5px;
+        letter-spacing: 0.18em;
+        font-weight: 700;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        padding: 6px 16px;
+        border-radius: 999px;
+    }
+
+    .product-card__scheduled {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(44, 32, 24, 0.78);
+        color: #fff;
+        font-size: 10px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    .product-card__scheduled--online {
+        background: rgba(104, 120, 168, 0.92);
+    }
+
+    .product-card__body {
+        padding: 14px 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+    }
+
+    .product-card__name {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--text-main);
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .product-card__sub {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    .product-card__bottom {
+        margin-top: auto;
+        padding-top: 4px;
+    }
+
+    .product-card__price {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.03em;
+    }
+
+    .product-card__price-unit {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-left: 2px;
+    }
+
+    .product-card--sm {
+        border-radius: var(--radius-sm);
+    }
+
+    .product-card--sm .product-card__body {
+        padding: 11px 12px 13px;
+    }
+
+    .product-card--sm .product-card__name {
+        font-size: 12.5px;
+        -webkit-line-clamp: 2;
+    }
+
+    .product-card--sm .product-card__price {
+        font-size: 14.5px;
+    }
+
+    // ============ Pick Carousel ============
+    .pick-carousel {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 64%;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 4px;
+    }
+
+    .pick-carousel>* {
+        scroll-snap-align: start;
+    }
+
+    // ============ Stream Card ============
+    .stream-card {
+        flex-shrink: 0;
+        width: 320px;
+        background: var(--white);
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.24s, box-shadow 0.24s, border-color 0.2s;
+    }
+
+    .stream-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--line-strong);
+    }
+
+    // 클릭 가능 변형 — 본체 클릭으로 글 상세 이동
+    .stream-card--clickable {
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 2px;
+        }
+    }
+
+    .stream-card__body {
+        padding: 16px 16px 0;
+    }
+
+    .stream-card__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .stream-card__avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: var(--bg-muted);
+    }
+
+    .stream-card__avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .stream-card__author {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .stream-card__name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .stream-card__time {
+        font-size: 11px;
+        color: var(--text-light);
+        margin: 0;
+    }
+
+    .stream-card__title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-main);
+        margin: 0 0 8px;
+        letter-spacing: -0.02em;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .stream-card__content {
+        font-size: 12.5px;
+        color: var(--text-sub);
+        line-height: 1.6;
+        margin: 0 0 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .stream-card__image-wrap {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: var(--bg-muted);
+        overflow: hidden;
+    }
+
+    .stream-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .stream-card__product-tag-wrap {
+        padding: 12px 16px 0;
+    }
+
+    .stream-card__product-tag {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: var(--bg-soft);
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .stream-card__product-tag:hover {
+        background: var(--bg-muted);
+        border-color: var(--line-strong);
+    }
+
+    .stream-card__product-tag-img {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .stream-card__product-tag-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .stream-card__product-tag-name {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-main);
+        margin: 0 0 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
+    }
+
+    .stream-card__product-tag-price {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--brand-dark);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .stream-card__product-tag-arrow {
+        font-size: 18px;
+        color: var(--text-light);
+        flex-shrink: 0;
+    }
+
+    .stream-card__actions {
+        padding: 12px 16px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-muted);
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .stream-card__like {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .stream-card__comment {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    // ============ News Feed Section ============
+    .news-feed-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .news-feed-filter {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .news-feed-filter__btn {
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 600;
+        border: 1px solid var(--line);
+        background: var(--white);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.18s ease;
+    }
+
+    .news-feed-filter__btn.active {
+        background: var(--brand);
+        border-color: var(--brand);
+        color: #fff;
+    }
+
+    .news-feed-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .news-feed-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-sm);
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .news-feed-card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .news-feed-card__author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .news-feed-card__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        background: var(--bg-muted);
+    }
+
+    .news-feed-card__author-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .news-feed-card__author-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .news-feed-card__author-name {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.02em;
+    }
+
+    .news-feed-card__time {
+        font-size: 11.5px;
+        color: var(--text-light);
+    }
+
+    .news-feed-card__more {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 18px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+    }
+
+    .news-feed-card__more:hover {
+        background: var(--bg-soft);
+    }
+
+    .news-feed-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .news-feed-card__title {
+        font-size: 15.5px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin: 0;
+        letter-spacing: -0.02em;
+        line-height: 1.42;
+    }
+
+    .news-feed-card__text {
+        font-size: 13.5px;
+        color: var(--text-sub);
+        line-height: 1.7;
+        margin: 0;
+        word-break: keep-all;
+    }
+
+    .news-feed-card__image-wrap {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--bg-muted);
+    }
+
+    .news-feed-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .news-feed-card__product-tag {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: var(--bg-soft);
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .news-feed-card__product-tag:hover {
+        background: var(--bg-muted);
+        border-color: var(--line-strong);
+    }
+
+    .news-feed-card__product-tag-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .news-feed-card__product-tag-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .news-feed-card__product-tag-name {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--text-main);
+        margin: 0 0 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
+    }
+
+    .news-feed-card__product-tag-price {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--brand-dark);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .news-feed-card__product-tag-arrow {
+        font-size: 20px;
+        color: var(--text-light);
+        flex-shrink: 0;
+    }
+
+    .news-feed-card__footer {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+    }
+
+    .news-feed-card__action {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 13.5px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 0;
+    }
+
+    .news-feed-card__action:hover {
+        color: var(--text-main);
+    }
+
+    // ============ Collection Section ============
+    .collection-section {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .collection-section__scroll {
+        // 가로 스크롤 제거 — 그리드 레이아웃
+        margin: 0;
+        padding: 0;
+    }
+
+    .collection-section__track {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        // 태블릿 영역(640~1080)은 2-col 유지 — 카드 폭 확보 + 4개 mock에서 2×2 깔끔
+        @media (min-width: 1080px) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    .collection-card-v2 {
+        width: 100%;
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        cursor: pointer;
+        aspect-ratio: 2 / 3;
+        box-shadow: var(--shadow-md);
+        transition: transform 0.28s, box-shadow 0.28s;
+    }
+
+    .collection-card-v2:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .collection-card-v2__image-wrap {
+        position: absolute;
+        inset: 0;
+    }
+
+    .collection-card-v2__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .collection-card-v2:hover .collection-card-v2__image {
+        transform: scale(1.05);
+    }
+
+    .collection-card-v2__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top,
+                rgba(28, 20, 14, 0.86) 0%,
+                rgba(28, 20, 14, 0.4) 40%,
+                rgba(28, 20, 14, 0) 70%);
+    }
+
+    .collection-card-v2__body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        color: #fff;
+    }
+
+    .collection-card-v2__title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.03em;
+        margin: 0 0 4px;
+        line-height: 1.3;
+    }
+
+    .collection-card-v2__desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.84);
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+    }
+
+    .collection-card-v2__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .collection-chip {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 4px 10px;
+        border-radius: 999px;
+        letter-spacing: -0.01em;
+    }
+
+    // ============ 모바일 보강 ============
+    @media (max-width: 768px) {
+        .collection-section__track {
+            gap: 14px;
+        }
+
+        .collection-card-v2 {
+            border-radius: 18px;
+        }
+
+        .collection-card-v2__body {
+            padding: 16px 13px 15px;
+        }
+    }
+
+    // ============ Stream Grid (최근 소식 · 구매자 후기) ============
+    // 기존 stream-card는 가로 스크롤용 width: 320px 고정 → 그리드 셀 폭에 맞춤.
+    // 그리드 행 안에서 카드들이 균등 높이로 정렬되도록 height: 100% +
+    // 본문 길이가 다른 카드들도 액션 영역이 동일 라인에 떨어지도록 actions에 margin-top: auto.
+    .stream-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: minmax(0, 1fr);
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stream-card {
+            width: auto;
+            flex-shrink: 1;
+            min-width: 0;
+            height: 100%;
+        }
+
+        .stream-card__actions {
+            margin-top: auto;
+        }
+    }
+
+    // ============ Class Calendar ============
+    .class-calendar {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 22px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .class-calendar__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .class-calendar__nav-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: var(--white);
+        cursor: pointer;
+        font-size: 18px;
+        color: var(--text-main);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.18s, border-color 0.18s;
+    }
+
+    .class-calendar__nav-btn:hover {
+        background: var(--bg-soft);
+        border-color: var(--line-strong);
+    }
+
+    .class-calendar__nav-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.03em;
+    }
+
+    .class-calendar__weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+
+    .class-calendar__weekday {
+        text-align: center;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: var(--text-muted);
+        padding: 6px 0;
+    }
+
+    .class-calendar__grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+    }
+
+    .class-calendar__cell {
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.18s, color 0.18s, transform 0.12s;
+        position: relative;
+    }
+
+    .class-calendar__cell--empty {
+        cursor: default;
+    }
+
+    .class-calendar__cell--has-class:not(.class-calendar__cell--selected):hover {
+        background: var(--bg-soft);
+    }
+
+    .class-calendar__cell--selected {
+        background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+        color: #fff;
+        transform: scale(1.04);
+        box-shadow: 0 6px 16px rgba(212, 163, 115, 0.3);
+    }
+
+    .class-calendar__cell--today:not(.class-calendar__cell--selected) {
+        background: var(--bg-soft);
+    }
+
+    .class-calendar__day-num {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .class-calendar__cell--empty .class-calendar__day-num {
+        color: var(--text-light);
+    }
+
+    .class-calendar__dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--brand);
+    }
+
+    .class-calendar__detail {
+        margin-top: 18px;
+    }
+
+    .class-calendar__empty {
+        text-align: center;
+        padding: 32px 0 8px;
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 500;
+    }
+}
