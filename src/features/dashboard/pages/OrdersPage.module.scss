@@ -1,0 +1,84 @@
+.header {
+  margin-bottom: 24px;
+  .title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+    @media (max-width: 1024px) { font-size: 24px; }
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.statTile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  .statLabel { font-size: 12px; color: var(--text-muted); }
+  .statValue { font-size: 24px; font-weight: 800; }
+  
+  .textBrand { color: var(--brand-main); }
+  .textGold { color: var(--status-gold); }
+  .textGreen { color: var(--status-green); }
+  .textBlue { color: var(--status-blue); }
+}
+
+.tableCard {
+  overflow-x: auto;
+}
+
+.tableWrapper {
+  min-width: 800px; /* 모바일에서도 테이블이 깨지지 않고 스크롤되도록 방어 */
+}
+
+.orderTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th {
+    padding: 16px;
+    border-bottom: 2px solid var(--line-strong);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line-light);
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+
+  .orderId { font-weight: 700; }
+  .dateText { font-size: 12px; color: var(--text-muted); }
+}
+
+.statusBadge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  
+  &.status-신규주문 { background: rgba(184, 121, 79, 0.1); color: var(--brand-main); }
+  &.status-제작중 { background: rgba(196, 154, 84, 0.1); color: var(--status-gold); }
+  // 기타 상태는 기본 회색
+  background: var(--bg-soft); color: var(--text-secondary); 
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 50px;
+  color: var(--text-muted);
+}

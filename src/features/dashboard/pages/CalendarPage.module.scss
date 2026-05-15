@@ -1,0 +1,258 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  .title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+
+    @media (max-width: 1024px) {
+      font-size: 24px;
+    }
+  }
+}
+
+.calendarLayout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendarCard {
+  padding: 30px;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}
+
+.monthNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .navButtons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .iconBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: all 0.2s;
+
+    &:hover {
+      background: var(--bg-soft);
+      border-color: var(--brand-main);
+    }
+  }
+}
+
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.emptyDay {
+  min-height: 100px;
+}
+
+.dayCell {
+  min-height: 100px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-light);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: var(--brand-light);
+    box-shadow: var(--shadow-soft);
+  }
+
+  &.selected {
+    border: 2px solid var(--brand-main);
+    background: var(--bg-soft);
+    
+    .dayNumber {
+      font-weight: 800;
+      color: var(--brand-main);
+    }
+  }
+}
+
+.dayNumber {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.eventStack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.eventPill {
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.moreEvents {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.bgClass { 
+  background-color: #f59e0b !important; // 주황색
+  color: #ffffff !important;           // 흰색 글자 강제
+}
+
+.bgWork { 
+  background-color: #3b82f6 !important; // 파란색
+  color: #ffffff !important;           // 흰색 글자 강제
+}
+
+.bgOrder { 
+  background-color: #ef4444 !important; // 빨간색
+  color: #ffffff !important;           // 흰색 글자 강제
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailCard {
+  padding: 24px;
+  min-height: 300px;
+
+  h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eventItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-light);
+}
+
+.indicator {
+  width: 4px;
+  height: 36px;
+  border-radius: 2px;
+}
+
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eventTitle {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.eventMeta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.emptyMessage {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+.tipCard {
+  padding: 24px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgb(0, 0, 0);
+  }
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}

@@ -1,0 +1,91 @@
+.header {
+  margin-bottom: 30px;
+  .title { font-size: 30px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: var(--text-secondary); }
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.kpiCard {
+  .kpiHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .kpiLabel { font-size: 13px; color: var(--text-secondary); font-weight: 700; }
+  .kpiIcon { color: var(--brand-light); }
+  
+  .kpiValue { 
+    font-size: 28px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; 
+    .unit { font-size: 16px; font-weight: 600; margin-left: 4px; color: var(--text-secondary); }
+  }
+  
+  .kpiTrend { 
+    display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--status-green); 
+    &.down { color: var(--status-red); }
+  }
+}
+
+.chartContainer {
+  .chartHeader {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;
+    .chartTitle { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+    .chartMeta { font-size: 12px; color: var(--text-muted); }
+  }
+}
+
+/* CSS로 구현하는 깔끔한 막대 차트 */
+.barChart {
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+}
+
+.barBackground {
+  width: 32px;
+  height: 100%;
+  background: var(--bg-main);
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  
+  @media (max-width: 768px) { width: 20px; }
+}
+
+.barFill {
+  width: 100%;
+  background: var(--brand-light);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.5s ease-out;
+
+  &.activeBar { background: var(--brand-main); }
+}
+
+.barLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: -24px; /* 축 아래로 글씨 내리기 */
+  
+  &.activeLabel { color: var(--brand-main); font-weight: 800; }
+}

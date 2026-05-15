@@ -1,0 +1,155 @@
+.header {
+  margin-bottom: 30px;
+  .title { font-size: 30px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: var(--text-secondary); }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* 새 소식 작성 영역 */
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.textareaWrapper {
+  position: relative;
+  margin-bottom: 16px;
+  
+  .textarea {
+    width: 100%;
+    background: var(--bg-soft);
+    border: 1px solid var(--line-strong);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+
+    &::placeholder { color: var(--text-muted); }
+    &:focus { border-color: var(--brand-main); }
+  }
+
+  .charCount {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    pointer-events: none;
+  }
+}
+
+.composerToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 작성한 소식 목록 영역 */
+.listTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.feedList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .dateText { font-size: 12px; color: var(--text-secondary); font-weight: 600; }
+  
+  .actionIcons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .iconBtn, .iconBtnError {
+    background: transparent; border: none; cursor: pointer; padding: 4px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  
+  .iconBtn {
+    color: var(--text-muted);
+    &:hover { background: rgba(0,0,0,0.05); color: var(--text-primary); }
+  }
+
+  .iconBtnError {
+    color: var(--text-muted);
+    &:hover { background: rgba(224, 82, 82, 0.1); color: var(--status-red); }
+  }
+}
+
+.feedBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .feedText {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    white-space: pre-wrap; /* 줄바꿈 유지 */
+  }
+
+  .feedImage {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-light);
+  }
+}
+
+.feedFooter {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--brand-main);
+  font-weight: 700;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.emptyState {
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  
+  .emptyIcon { margin-bottom: 12px; opacity: 0.5; }
+}

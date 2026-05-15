@@ -1,0 +1,88 @@
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a120d; /* 다크하고 고급스러운 배경 */
+  color: #f7efe7;
+  overflow-y: auto;
+}
+
+.header {
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logoText {
+    font-weight: 800;
+    font-size: 24px;
+    color: #f7efe7;
+    letter-spacing: 1.5px;
+  }
+
+  .subText {
+    font-size: 9px;
+    color: rgba(245, 235, 224, 0.5);
+    letter-spacing: 2px;
+  }
+
+  .closeBtn {
+    cursor: pointer;
+    color: #c28a61;
+    transition: transform 0.2s;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.groupTitle {
+  font-size: 11px;
+  color: rgba(245, 235, 224, 0.4);
+  margin: 24px 20px 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  color: rgba(245, 235, 224, 0.7);
+  transition: all 0.2s ease;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+
+  &:hover {
+    color: #f7efe7;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* 활성화(Active) 상태 디자인 */
+  &.active {
+    color: #f7efe7;
+    background: linear-gradient(90deg, rgba(194, 138, 97, 0.15) 0%, rgba(26, 18, 13, 0) 100%);
+    font-weight: 700;
+    border-left: 3px solid #c28a61;
+  }
+}
+
+.logoutBtn {
+  margin-top: auto;
+  padding: 24px 20px;
+  color: rgba(245, 235, 224, 0.7);
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color 0.2s;
+
+  &:hover {
+    color: #f7efe7;
+  }
+}
