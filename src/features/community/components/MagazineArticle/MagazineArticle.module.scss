@@ -1,0 +1,348 @@
+// src/features/community/components/MagazineArticle/MagazineArticle.module.scss
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+// ===== 헤더 =====
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.coverWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg-muted);
+  overflow: hidden;
+
+  @include from-tablet {
+    aspect-ratio: 16 / 8;
+  }
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.headerBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-5 $space-5 0;
+
+  @include from-tablet {
+    padding: $space-6 $space-8 0;
+  }
+}
+
+.topRow {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: $radius-sm;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.08em;
+}
+
+.category {
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  font-weight: $font-weight-medium;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  word-break: keep-all;
+
+  @include from-tablet {
+    font-size: $font-size-3xl;
+    line-height: 1.25;
+  }
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-3 0;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.authorBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  cursor: pointer;
+  min-width: 0;
+  border-radius: $radius-sm;
+  padding: 2px;
+
+  @include hover { background: var(--color-bg-soft); }
+  &:focus-visible { @include focus-ring; }
+}
+
+.authorAvatar,
+.authorAvatarFallback {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.authorAvatar {
+  object-fit: cover;
+}
+
+.authorAvatarFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-md;
+  text-transform: uppercase;
+}
+
+.authorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.authorName {
+  margin: 0;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.authorSub {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+// ===== 메뉴 (본인 글) =====
+.menuWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.menuTrigger {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 140px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  box-shadow: var(--shadow-md);
+  padding: $space-1;
+  z-index: $z-dropdown;
+}
+
+.menuItem {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: var(--color-text-primary);
+  text-align: left;
+
+  @include hover { background: var(--color-bg-soft); }
+}
+
+.menuItemDanger {
+  color: var(--color-danger);
+}
+
+// ===== 본문 (Markdown prose) =====
+.body {
+  padding: 0 $space-5 $space-3;
+  font-size: $font-size-md;
+  line-height: 1.85;
+  color: var(--color-text-primary);
+  word-break: keep-all;
+
+  @include from-tablet {
+    padding: 0 $space-8 $space-3;
+    font-size: $font-size-lg;
+  }
+
+  h1, h2, h3, h4 {
+    margin: $space-8 0 $space-3;
+    font-weight: $font-weight-bold;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  h1 { font-size: $font-size-2xl; }
+  h2 { font-size: $font-size-xl; }
+  h3 { font-size: $font-size-lg; }
+
+  p { margin: $space-4 0; }
+
+  img {
+    max-width: calc(100% + #{$space-5 * 2});
+    width: calc(100% + #{$space-5 * 2});
+    margin: $space-6 -#{$space-5};
+    height: auto;
+    border-radius: 0;
+    display: block;
+
+    @include from-tablet {
+      max-width: calc(100% + #{$space-8 * 2});
+      width: calc(100% + #{$space-8 * 2});
+      margin: $space-8 -#{$space-8};
+    }
+  }
+
+  a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  blockquote {
+    margin: $space-6 0;
+    padding: $space-3 $space-5;
+    border-left: 3px solid var(--color-brand);
+    background: var(--color-bg-soft);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    border-radius: 0 $radius-md $radius-md 0;
+  }
+
+  code {
+    padding: 2px 6px;
+    background: var(--color-bg-soft);
+    border-radius: $radius-sm;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.92em;
+  }
+
+  ul, ol {
+    margin: $space-4 0;
+    padding-left: $space-5;
+  }
+  li { margin: $space-2 0; }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border-subtle);
+    margin: $space-8 0;
+  }
+}
+
+// ===== 액션 바 =====
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  border-top: 1px solid var(--color-border-subtle);
+
+  @include from-tablet {
+    padding: $space-5 $space-8;
+  }
+}
+
+.actionsLeft,
+.actionsRight {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.commentButton,
+.iconActionButton,
+.bookmarkButton {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-2 $space-3;
+  border-radius: $radius-full;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-variant-numeric: tabular-nums;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.iconActionButton,
+.bookmarkButton {
+  padding: $space-2;
+}
+
+.bookmarkButtonActive {
+  color: var(--color-brand);
+
+  @include hover {
+    background: var(--color-brand-soft);
+    color: var(--color-brand);
+  }
+}

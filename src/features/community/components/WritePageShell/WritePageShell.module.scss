@@ -1,0 +1,65 @@
+// src/features/community/components/WritePageShell/WritePageShell.module.scss
+
+.page {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: $space-5 $space-4 $space-12;
+  // sticky 액션바와의 시각 호흡 — 모바일에서 본문 잘림 방지
+  padding-bottom: calc(120px + env(safe-area-inset-bottom, 0));
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  @include from-tablet {
+    padding: $space-8 $space-5 $space-12;
+    padding-bottom: $space-12;
+    gap: $space-6;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.backLink {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  padding: $space-2 $space-3;
+  margin-left: -#{$space-3};   // 좌측 페이지 패딩에 맞춰 정렬
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  @include hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-soft);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+
+  @include from-tablet { font-size: $font-size-3xl; }
+}
+
+.formArea {
+  display: flex;
+  flex-direction: column;
+}

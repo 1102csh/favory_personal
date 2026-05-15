@@ -1,0 +1,67 @@
+// src/features/community/components/WriteButton/WriteButton.module.scss
+
+.button {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  @include hover {
+    background: var(--color-brand-hover);
+    transform: translateY(-1px);
+  }
+
+  &:active { transform: translateY(0); }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.fab {
+  @include reset-button;
+  position: fixed;
+  right: $space-5;
+  bottom: calc(#{$space-5} + env(safe-area-inset-bottom, 0));
+  height: 48px;
+  padding: 0 $space-5 0 $space-4;
+  border-radius: $radius-full;
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.01em;
+  z-index: $z-sticky;
+  transition: transform $transition-fast, box-shadow $transition-fast, background-color $transition-fast;
+
+  @include hover {
+    background: var(--color-brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+  }
+
+  &:active { transform: translateY(0); }
+
+  &:focus-visible { @include focus-ring; }
+
+  // 데스크톱에선 사이드바와의 시각 간섭을 줄이기 위해 우측 여백을 살짝 늘림
+  @include from-desktop {
+    height: 50px;
+    right: $space-6;
+    bottom: $space-6;
+    font-size: $font-size-md;
+  }
+}
+
+.fabLabel {
+  line-height: 1;
+}

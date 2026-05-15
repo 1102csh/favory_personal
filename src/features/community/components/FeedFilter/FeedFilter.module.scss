@@ -1,0 +1,47 @@
+// src/features/community/components/FeedFilter/FeedFilter.module.scss
+
+.bar {
+  display: flex;
+  gap: $space-2;
+  padding: $space-1 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.chip {
+  @include reset-button;
+  flex-shrink: 0;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast;
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.active {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-text-on-brand);
+
+  @include hover {
+    background: var(--color-brand-hover);
+    border-color: var(--color-brand-hover);
+    color: var(--color-text-on-brand);
+  }
+}

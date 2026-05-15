@@ -1,0 +1,20 @@
+// src/features/community/components/CommentList/CommentList.module.scss
+
+.list,
+.replyList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  text-align: center;
+  padding: $space-8 $space-4;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}

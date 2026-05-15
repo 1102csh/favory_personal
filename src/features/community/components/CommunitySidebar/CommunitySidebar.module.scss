@@ -1,0 +1,10 @@
+// src/features/community/components/CommunitySidebar/CommunitySidebar.module.scss
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  width: 320px;
+  flex-shrink: 0;
+  // position: sticky 제거
+}

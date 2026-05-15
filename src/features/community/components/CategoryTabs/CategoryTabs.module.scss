@@ -1,0 +1,65 @@
+// src/features/community/components/CategoryTabs/CategoryTabs.module.scss
+
+.wrapper {
+  position: relative;
+}
+
+.scroll {
+  display: flex;
+  gap: $space-1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border-subtle);
+  pointer-events: none;
+}
+
+.tab {
+  @include reset-button;
+  position: relative;
+  flex-shrink: 0;
+  padding: $space-3 $space-4;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: color $transition-fast;
+  z-index: 1;
+
+  // 활성 탭 underline
+  &::after {
+    content: '';
+    position: absolute;
+    left: $space-3;
+    right: $space-3;
+    bottom: 0;
+    height: 2px;
+    background: transparent;
+    border-radius: 2px 2px 0 0;
+    transition: background-color $transition-fast;
+  }
+
+  @include hover {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.tabActive {
+  color: var(--color-text-primary);
+  font-weight: $font-weight-semibold;
+
+  &::after {
+    background: var(--color-brand);
+  }
+}

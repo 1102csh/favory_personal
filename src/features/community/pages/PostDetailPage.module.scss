@@ -1,0 +1,262 @@
+// src/features/community/pages/PostDetailPage.module.scss
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: $space-5 $space-4 $space-12;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include from-tablet {
+    padding: $space-8 $space-5 $space-12;
+    gap: $space-6;
+  }
+}
+
+// 모바일 sticky 입력창과 본문 겹침 방지 — 본문 하단에 입력창 높이만큼 여백 확보
+.containerWithStickyInput {
+  padding-bottom: calc(140px + env(safe-area-inset-bottom, 0));
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  align-self: flex-start;
+  padding: $space-1 $space-2;
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  @include hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-soft);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+// ===== 댓글 영역 — 박스 제거, 자연스러운 페이지 흐름 =====
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: $space-5;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.commentTitle {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.commentCount {
+  margin-left: 4px;
+  color: var(--color-brand);
+  font-variant-numeric: tabular-nums;
+}
+
+// ===== 댓글 정렬 토글 =====
+.sortToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: var(--color-bg-soft);
+  border-radius: $radius-full;
+}
+
+.sortOption {
+  @include reset-button;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: color $transition-fast, background-color $transition-fast;
+
+  @include hover {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.sortOptionActive {
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+// ===== 모바일 sticky 댓글 입력 =====
+.mobileStickyInput {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: $space-3 $space-4;
+  padding-bottom: calc(#{$space-3} + env(safe-area-inset-bottom, 0));
+  z-index: $z-sticky;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+}
+
+// ===== Toast (공유 링크 복사 알림) =====
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(#{$space-6} + env(safe-area-inset-bottom, 0));
+  transform: translateX(-50%);
+  padding: $space-3 $space-5;
+  border-radius: $radius-full;
+  background: rgba(20, 14, 8, 0.92);
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+  z-index: $z-toast;
+  animation: toastIn 0.18s ease-out;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+// ============ Skeletons ============
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-5;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-lg;
+  background: var(--color-bg-surface);
+}
+
+.skeletonHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.skeletonAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeletonAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  flex: 1;
+  min-width: 0;
+}
+
+.skeletonTitle {
+  height: 22px;
+  width: 65%;
+}
+
+.skeletonBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.skeletonImage {
+  height: 220px;
+  width: 100%;
+
+  @include from-tablet { height: 320px; }
+}
+
+.skeletonActionsBar {
+  display: flex;
+  gap: $space-3;
+  padding-top: $space-3;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.skeletonActionItem { height: 18px; width: 60px; }
+.skeletonLine { height: 14px; width: 100%; }
+.skeletonLineShort { height: 14px; width: 70%; }
+.skeletonLineXs { height: 12px; width: 30%; }
+.skeletonLineXxs { height: 10px; width: 20%; }
+
+// ===== 댓글 스켈레톤 =====
+.commentSkeletonList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.commentSkeletonItem {
+  display: flex;
+  gap: $space-3;
+}
+
+.commentSkeletonBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  min-width: 0;
+}
+
+// 공통 shimmer 효과
+.skeletonAvatar,
+.skeletonTitle,
+.skeletonLine,
+.skeletonLineShort,
+.skeletonLineXs,
+.skeletonLineXxs,
+.skeletonImage,
+.skeletonActionItem {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-muted) 0%,
+    var(--color-bg-soft) 50%,
+    var(--color-bg-muted) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: $radius-sm;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonAvatar { border-radius: 50%; }
+.skeletonImage { border-radius: $radius-md; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@include reduced-motion {
+  .skeletonAvatar,
+  .skeletonTitle,
+  .skeletonLine,
+  .skeletonLineShort,
+  .skeletonLineXs,
+  .skeletonLineXxs,
+  .skeletonImage,
+  .skeletonActionItem { animation: none; }
+}

@@ -1,0 +1,94 @@
+// src/features/community/components/CommunitySidebar/widgets/WelcomeWidget.module.scss
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-5;
+  border-radius: $radius-lg;
+  background: linear-gradient(
+    180deg,
+    var(--color-brand-soft) 0%,
+    var(--color-bg-surface) 100%
+  );
+  border: 1px solid var(--color-border-subtle);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+}
+
+.title {
+  margin: 0 0 $space-1;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.description {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  line-height: $line-height-relaxed;
+  word-break: keep-all;
+}
+
+.roadmap {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.roadmapItem {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $font-size-xs;
+}
+
+.roadmapMonth {
+  flex-shrink: 0;
+  width: 28px;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.roadmapLabel {
+  color: var(--color-text-secondary);
+}
+
+.cta {
+  @include reset-button;
+  width: 100%;
+  height: 40px;
+  border-radius: $radius-md;
+  background: var(--color-text-primary);
+  color: var(--color-bg-page);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: opacity $transition-fast;
+
+  @include hover { opacity: 0.88; }
+
+  &:focus-visible { @include focus-ring; }
+}

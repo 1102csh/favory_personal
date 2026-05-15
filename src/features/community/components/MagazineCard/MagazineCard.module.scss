@@ -1,0 +1,226 @@
+// src/features/community/components/MagazineCard/MagazineCard.module.scss
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    transform $transition-fast;
+}
+
+.clickable {
+  cursor: pointer;
+
+  @include hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+// ===== 커버 이미지 =====
+.imageBlock {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-muted) 0%,
+    var(--color-bg-soft) 100%
+  );
+  overflow: hidden;
+
+  @include from-tablet {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// ===== 본문 =====
+.body {
+  padding: $space-4 $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  @include from-tablet {
+    padding: $space-5 $space-6 $space-4;
+    gap: $space-3;
+  }
+}
+
+.chipRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+}
+
+.typeChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: $radius-sm;
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  word-break: keep-all;
+
+  // 2줄까지만
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @include from-tablet { font-size: $font-size-2xl; }
+}
+
+.meta {
+  margin: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.metaDivider {
+  color: var(--color-text-subtle);
+}
+
+// ===== 메뉴 =====
+.menuWrap {
+  position: relative;
+}
+
+.menuTrigger {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 140px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  box-shadow: var(--shadow-md);
+  padding: $space-1;
+  z-index: $z-dropdown;
+}
+
+.menuItem {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: var(--color-text-primary);
+  text-align: left;
+
+  @include hover { background: var(--color-bg-soft); }
+}
+
+.menuItemDanger {
+  color: var(--color-danger);
+}
+
+// ===== 액션 바 =====
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 $space-5 $space-4;
+
+  @include from-tablet {
+    padding: $space-3 $space-6 $space-5;
+  }
+}
+
+.actionsLeft {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.commentButton,
+.bookmarkButton {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-2 $space-3;
+  border-radius: $radius-full;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-variant-numeric: tabular-nums;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible { @include focus-ring; }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.bookmarkButton {
+  padding: $space-2;
+}
+
+.bookmarkButtonActive {
+  color: var(--color-brand);
+
+  @include hover {
+    background: var(--color-brand-soft);
+    color: var(--color-brand);
+  }
+}

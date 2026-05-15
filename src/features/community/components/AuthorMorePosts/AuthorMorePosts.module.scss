@@ -1,0 +1,144 @@
+// src/features/community/components/AuthorMorePosts/AuthorMorePosts.module.scss
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: $space-5;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  min-width: 0;
+}
+
+.author {
+  color: var(--color-brand);
+  font-weight: $font-weight-bold;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.titleTail {
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.moreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @include hover { color: var(--color-text-primary); }
+  &:focus-visible { @include focus-ring; }
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-3;
+
+  @include from-tablet {
+    gap: $space-4;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  text-decoration: none;
+  color: inherit;
+  border-radius: $radius-md;
+  transition: transform $transition-fast;
+
+  @include hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-muted);
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.thumbnailFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-subtle);
+  background: var(--color-bg-soft);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+.dot { color: var(--color-text-subtle); }

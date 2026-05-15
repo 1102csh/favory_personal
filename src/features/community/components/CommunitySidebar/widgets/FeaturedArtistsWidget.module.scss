@@ -1,0 +1,109 @@
+// src/features/community/components/CommunitySidebar/widgets/FeaturedArtistsWidget.module.scss
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-5;
+  border-radius: $radius-lg;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.artistBtn {
+  @include reset-button;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2;
+  border-radius: $radius-sm;
+  text-align: left;
+  min-width: 0;
+  transition: background-color $transition-fast;
+
+  @include hover { background: var(--color-bg-soft); }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  @include truncate;
+}
+
+.tags {
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  @include truncate;
+}
+
+.followBtn {
+  @include reset-button;
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: $radius-full;
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  transition: background-color $transition-fast, border-color $transition-fast;
+
+  @include hover {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-text-on-brand);
+  }
+}
