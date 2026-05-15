@@ -1,0 +1,65 @@
+// src/features/profile/pages/ProfileEditPage.module.scss
+
+.page {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: $space-6 $space-4 $space-12;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  @include from-tablet {
+    padding: $space-8 $space-5 $space-12;
+  }
+}
+
+.backLink {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  @include hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-soft);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.message {
+  text-align: center;
+  padding: $space-8;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+}

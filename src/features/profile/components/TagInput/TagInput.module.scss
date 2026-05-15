@@ -1,0 +1,98 @@
+// src/features/profile/components/TagInput/TagInput.module.scss
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  min-height: 48px;
+  padding: $space-2 $space-3;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-bg-surface);
+  cursor: text;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: var(--color-border-focus);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.boxError {
+  border-color: var(--color-danger);
+  &:focus-within { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15); }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 4px 4px 4px 10px;
+  border-radius: $radius-full;
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+}
+
+.removeBtn {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: var(--color-brand);
+  transition: background-color $transition-fast;
+
+  @include hover { background: rgba(0, 0, 0, 0.08); }
+}
+
+.input {
+  flex: 1;
+  min-width: 100px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: $font-size-sm;
+  font-family: inherit;
+  color: var(--color-text-primary);
+
+  @include until-tablet { font-size: $font-size-lg; }
+
+  &::placeholder { color: var(--color-text-subtle); }
+}
+
+.error {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-danger);
+}
+
+.hint {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+.counter {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

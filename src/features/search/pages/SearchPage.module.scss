@@ -1,0 +1,53 @@
+// src/features/search/pages/SearchPage.module.scss
+
+.page {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: $space-6 $space-4 $space-12;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  @include from-tablet {
+    padding: $space-8 $space-5 $space-12;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+
+  @include from-tablet { font-size: $font-size-3xl; }
+}
+
+.tagLabel,
+.queryLabel {
+  color: var(--color-brand);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.loadingMore {
+  text-align: center;
+  padding: $space-4;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+}

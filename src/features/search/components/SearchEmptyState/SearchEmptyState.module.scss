@@ -1,0 +1,169 @@
+// src/features/search/components/SearchEmptyState/SearchEmptyState.module.scss
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  padding: $space-4 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  color: var(--color-text-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.clearAllBtn {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+
+  @include hover {
+    color: var(--color-danger);
+    background: var(--color-bg-soft);
+  }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+// ===== 최근 검색 칩 =====
+.chipList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: $radius-full;
+  overflow: hidden;
+  transition: border-color $transition-fast;
+
+  @include hover { border-color: var(--color-border-strong); }
+}
+
+.chipBtn {
+  @include reset-button;
+  padding: 6px 4px 6px 14px;
+  font-size: $font-size-sm;
+  color: var(--color-text-primary);
+  font-weight: $font-weight-medium;
+}
+
+.chipRemove {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+
+  @include hover {
+    background: var(--color-bg-soft);
+    color: var(--color-danger);
+  }
+}
+
+// ===== 인기 검색어 리스트 =====
+.popularList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-1;
+
+  @include from-tablet {
+    grid-template-columns: 1fr 1fr;
+    column-gap: $space-6;
+  }
+}
+
+.popularBtn {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-2;
+  border-radius: $radius-sm;
+  text-align: left;
+  transition: background-color $transition-fast;
+
+  @include hover { background: var(--color-bg-soft); }
+
+  &:focus-visible { @include focus-ring; }
+}
+
+.rank {
+  width: 24px;
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: var(--color-brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.popularTerm {
+  flex: 1;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+  @include truncate;
+}
+
+// ===== 트렌드 아이콘 =====
+.trend {
+  flex-shrink: 0;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.trendUp    { color: var(--color-danger); }    // 빨강 (상승)
+.trendDown  { color: var(--color-success); }   // 초록 (하락 — 한국 관습)
+.trendFlat  { color: var(--color-text-subtle); }
+
+.notice {
+  margin: 0;
+  font-size: $font-size-xs;
+  color: var(--color-text-subtle);
+  text-align: right;
+}
